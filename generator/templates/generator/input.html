@@ -1,0 +1,60 @@
+{% extends 'todo/base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <div class="container text-center">
+    <form action='password'>
+
+      <!-- <label for="customRange2">Length of Password</label>
+<input type="range" class="custom-range" min="8" max="16" id="customRange2" name="length1">
+<small id="lengthHelpBlock" class="form-text text-muted">
+  Choose a length between 8 and 16 for your password
+</small> -->
+
+<div class="form-group w-25 p-3 container text-center">
+    <label for="exampleFormControlSelect1">Length of Password</label>
+    <select class="form-control" name="length">
+      <option value='5'>5</option>
+      <option value='7'>7</option>
+      <option value='8'>8</option>
+      <option value='9'>9</option>
+      <option value='10'>10</option>
+      <option value='11'>11</option>
+      <option value='12' selected='selected'>12</option>
+      <option value='13'>13</option>
+      <option value='14'>14</option>
+    </select>
+  </div>
+
+
+
+  <div class="form-check">
+  <input class="form-check-input" type="checkbox"  id="defaultCheck1" name="uppercase">
+  <label class="form-check-label" for="defaultCheck1">
+    UpperCase
+  </label>
+</div>
+
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="defaultCheck2" name="numbers">
+<label class="form-check-label" for="defaultCheck2">
+  Numbers
+</label>
+</div>
+
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="defaultCheck3" name="special">
+<label class="form-check-label" for="defaultCheck3">
+  Special Characters
+</label>
+</div>
+
+<input type="submit" value="Submit Request">
+
+</form>
+<br>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+        <h2>Sign Up</h2>
+    </div>
+</div>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" class="form-control" id="username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password1" class="form-control" id="password1">
+            </div>
+            <div class="form-group">
+                <label for="password">Confirm Password</label>
+                <input type="password" name="password2" class="form-control" id="password2">
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+        <hr>
+        <div class="text-center">
+            Already Registered? <a href="{% url 'loginuser' %}">Login here</a>
+        </div>
+        <hr>
+        <div class="text-center">
+            Need Help to Generate a safe Password ? <a href="{% url 'generator:input' %}">Password Generator</a>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

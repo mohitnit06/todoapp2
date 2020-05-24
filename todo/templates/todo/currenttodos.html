@@ -1,0 +1,38 @@
+{% extends 'todo/base.html' %}
+{% block content %}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-10">
+        {% if todos %}
+             <h1>{{ todos.count }} Current Todo{{ todos.count|pluralize }}</h1>
+        {% else %}
+          <div class="jumbotron">
+            <h1 class="display-4">Get your work in order</h1>
+            <p class="lead">This application helps you to organize your day to day activities and keep a check on the work done as well as left pending. Use it to manage your tasks both at home and work place for a peaceful and stress free life.</p>
+            <hr class="my-4">
+            <p>Get started by adding a new task.</p>
+            <a class="btn btn-primary btn-lg" href="{% url 'createtodo' %}" role="button">Create Task</a>
+          </div>
+        {% endif %}
+    </div>
+</div>
+<div class="row justify-content-center mt-5">
+    <div class="col-md-10">
+    {% if todos %}
+        <div class="list-group">
+            {% for todo in todos %}
+                <a href="{% url 'viewtodo' todo.id %}" class="list-group-item list-group-item-action flex-column align-items-start {% if todo.important %} list-group-item-danger{% endif %}">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ todo.title }}</h5>
+                        <small>Created At : {{ todo.created_date }}</small>
+                    </div>
+                    <p class="mb-1">{% if todo.memo %}{{ todo.memo }}{% endif %}</p>
+                  </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+    </div>
+</div>
+
+
+{% endblock %}
