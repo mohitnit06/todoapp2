@@ -1,1 +1,8 @@
-Bug 1 : server error if sign up without entering any field
+Bugs 
+1. Server error if sign up without entering any field >>> Fixed
+
+
+
+New Features: 
+1. Add capability to specify due date & time for a todo task. 
+2. Show expired ToDo Tasks separately
