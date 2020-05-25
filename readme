@@ -6,3 +6,4 @@ Bugs
 New Features: 
 1. Add capability to specify due date & time for a todo task. 
 2. Show expired ToDo Tasks separately
+3. Add Favicon Image to base.html
