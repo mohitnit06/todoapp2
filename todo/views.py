@@ -16,7 +16,9 @@ def signupuser(request):
     if request.method == 'GET':
         return render(request, 'todo/signupuser.html', {'form':UserCreationForm()})
     else:
-        if request.POST['password1']==request.POST['password2']:
+        if request.POST['password1'] == '':
+            return render(request, 'todo/signupuser.html', {'form':UserCreationForm(), 'error':'Pasword can not be empty. Please Try Again'})
+        elif request.POST['password1']==request.POST['password2']:
             try:
                 user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
                 user.save()
@@ -24,6 +26,8 @@ def signupuser(request):
                 return redirect('currenttodos')
             except IntegrityError:
                 return render(request, 'todo/signupuser.html', {'form':UserCreationForm(), 'error':'UserName Already Taken. Please Try Again'})
+            except ValueError:
+                return render(request, 'todo/signupuser.html', {'form':UserCreationForm(), 'error':'Please add UserName. Please Try Again'})
         else:
             return render(request, 'todo/signupuser.html', {'form':UserCreationForm(), 'error':'Passwords Mismatch. Please Try Again.'})
 
