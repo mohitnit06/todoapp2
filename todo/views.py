@@ -16,8 +16,8 @@ def signupuser(request):
     if request.method == 'GET':
         return render(request, 'todo/signupuser.html', {'form':UserCreationForm()})
     else:
-        if request.POST['password1'] == '':
-            return render(request, 'todo/signupuser.html', {'form':UserCreationForm(), 'error':'Pasword can not be empty. Please Try Again'})
+        if request.POST['password1'] == '' or request.POST['username'] == '':
+            return render(request, 'todo/signupuser.html', {'form':UserCreationForm(), 'error':'Username/ Pasword can not be empty. Please Try Again'})
         elif request.POST['password1']==request.POST['password2']:
             try:
                 user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
